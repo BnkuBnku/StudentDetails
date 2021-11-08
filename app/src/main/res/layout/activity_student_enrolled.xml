@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentEnrolledActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:stretchColumns="1,2,3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/name_tv_dis"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Name"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cour_tv_dis"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Course"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/year_tv_dis"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Year"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/name_tv_in"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cour_tv_in"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/year_tv_in"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+
+            </TableRow>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:stretchColumns="1,2,3,4,5">
+                    <TableRow>
+
+
+
+                        <TextView
+                            android:id="@+id/off_tv_dis"
+                            android:layout_column="1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="OffNo"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/sub_tv_dis"
+                            android:layout_width="70dp"
+                            android:layout_column="1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="SubCode"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/sched_tv_dis"
+                            android:layout_width="88dp"
+                            android:layout_column="1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Sched"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/room_tv_dis"
+                            android:layout_column="1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Room"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/teach_tv_dis"
+                            android:layout_column="1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Teacher ID"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_v"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginEnd="1dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="50dp" />
+                </TableLayout>
+        </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

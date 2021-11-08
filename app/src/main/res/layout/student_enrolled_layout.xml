@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1,2,3,4,5">
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/off_tv_in"
+            android:layout_column="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="10dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/sub_tv_in"
+            android:layout_column="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="10dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/sched_tv_in"
+            android:layout_column="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="10dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/room_tv_in"
+            android:layout_column="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="10dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/teach_tv_in"
+            android:layout_column="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="10dp"
+            android:textStyle="normal" />
+
+
+    </TableRow>
+
+</TableLayout>
