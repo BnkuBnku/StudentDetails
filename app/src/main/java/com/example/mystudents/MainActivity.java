@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         Hak = findViewById(R.id.tv_id2);
         Dog = findViewById(R.id.tv_sname2);
 
-
-
         // adding click listener for our button
         BSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         // creating a new variable for our request queue.
         RequestQueue q = Volley.newRequestQueue(MainActivity.this);
 
-
         StringRequest r = new StringRequest(
             Request.Method.POST,
             url,
@@ -126,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                         String[] A1 = new String[size];
                         String[] A2 = new String[size];
 
-
                         for(int i=0; i<size; i++){
 
                             JSONObject ob = studentsarray.getJSONObject(i);
@@ -137,11 +133,9 @@ public class MainActivity extends AppCompatActivity {
                             GetDetails(size, A1, A2);
                     }
 
-
                 } catch (JSONException e) { //Display Error if any
                     makeText(getBaseContext(),"ERROR \n\n" + e.getMessage(), LENGTH_SHORT).show();
                 }
-
 
             }
         },
@@ -167,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
 
         String[] StudentIDArr = new String[Count];
         String[] StudentNameArr = new String[Count];
-
 
         int size = StudentNameArr.length;
 

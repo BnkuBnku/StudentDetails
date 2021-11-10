@@ -29,7 +29,6 @@ public class StudentEnrolledActivity extends AppCompatActivity {
 
     TextView nameIn, courIn, yearIn, offerIn, subIn, schedIn, roomIn, teachIn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +47,6 @@ public class StudentEnrolledActivity extends AppCompatActivity {
         String ID = i.getStringExtra("ID");
         String Name = i.getStringExtra("Name");
 
-        GetDetails(ID,Name);
-    }
-
-    private void GetDetails(String StID, String StName){
         // post our data.
         String url = "http://192.168.254.105/Students/DisplayStudentEnrolled.php";
 
@@ -66,15 +61,13 @@ public class StudentEnrolledActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONArray oh = new JSONArray(response);
-                            int l = 0;
-                            JSONObject ha = oh.getJSONObject(l);
-                            do{
-                                nameIn.append(ha.getString("StudentName"));
-                                courIn.append(ha.getString("Course"));
-                                yearIn.append(ha.getString("YearLevel"));
 
                                 for(int i=0; i<oh.length(); i++) {
                                     JSONObject ob = oh.getJSONObject(i);
+
+                                    nameIn.append(ob.getString("StudentName"));
+                                    courIn.append(ob.getString("Course"));
+                                    yearIn.append(ob.getString("YearLevel"));
 
                                     offerIn.append(ob.getString("OfferingNo"));
                                     subIn.append(ob.getString("SubjCode"));
@@ -82,7 +75,7 @@ public class StudentEnrolledActivity extends AppCompatActivity {
                                     roomIn.append(ob.getString("Room"));
                                     teachIn.append(ob.getString("TeacherID"));
                                 }
-                            } while(l<oh.length());
+
                         } catch (JSONException e) {
                             Toast.makeText(StudentEnrolledActivity.this, "Error " + e.getMessage(),Toast.LENGTH_SHORT).show();
                         }
@@ -97,8 +90,8 @@ public class StudentEnrolledActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<>();
-                param.put("StudentID", StID);
-                param.put("StudentName", StName);
+                param.put("StudentID", ID);
+                param.put("StudentName", Name);
                 return param;
             }
         };

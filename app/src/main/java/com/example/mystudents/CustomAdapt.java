@@ -10,13 +10,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 
-public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.ViewHolder> {
-
+public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.StudentIDViewHolder> {
     Context context;
     String[] SID;
     String[] SIN;
+
+    String D_Year;
+    String D_Off;
+    String D_Sub;
+    String D_Sched;
+    String D_Room;
+    String D_Teach;
 
     public CustomAdapt(Context context, String[] SID, String[] SIN) {
         this.context = context;
@@ -24,35 +31,14 @@ public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.ViewHolder> {
         this.SIN = SIN;
     }
 
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.student_layout,parent, false);
-        return new ViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.id_tv.setText(SID[position]);
-        holder.student_tv.setText(SIN[position]);
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return SID.length;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class StudentIDViewHolder extends ViewHolder{
         //variable for table row
         TableRow tableRow;
 
         //variable for textView/s
         TextView id_tv,student_tv;
 
-        public ViewHolder(@NonNull View itemView) {
+        public StudentIDViewHolder(@NonNull View itemView) {
             super(itemView);
 
             id_tv = itemView.findViewById(R.id.id_tv);
@@ -73,4 +59,26 @@ public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.ViewHolder> {
             }
         };
     }
+
+
+    @Override
+    public int getItemCount() {
+        return SID.length;
+    }
+
+
+    @NonNull
+    @Override
+    public StudentIDViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View v = inflater.inflate(R.layout.student_layout,parent, false);
+        return new StudentIDViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull StudentIDViewHolder holder, int position) {
+        holder.id_tv.setText(SID[position]);
+        holder.student_tv.setText(SIN[position]);
+    }
+
 }
