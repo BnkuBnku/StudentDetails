@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,22 +26,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class MainActivity extends AppCompatActivity {
 
     // variable for RecyclerView
     private RecyclerView recycler_v;
-
-    private String[] student_id;
-    private String[] student_name;
 
     // variable for button
     private Button BClear;
@@ -50,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText IDText;
     private EditText NameText;
 
-    private TextView Hak;
-    private TextView Dog;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         NameText = findViewById(R.id.editTextTextPersonName2);
         BClear = findViewById(R.id.buttonClear);
         BSearch = findViewById(R.id.buttonSearch);
-        Hak = findViewById(R.id.tv_id2);
-        Dog = findViewById(R.id.tv_sname2);
 
         // adding click listener for our button
         BSearch.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Check if the Edittext field empty or not.
                 if(TextUtils.isEmpty(IDText.getText().toString()) && TextUtils.isEmpty(NameText.getText().toString())){
-                    makeText(MainActivity.this, "Please Enter Student's ID and Name", LENGTH_LONG).show();
+                    makeText(MainActivity.this, "Please Enter Student's ID or Name", LENGTH_LONG).show();
 
                 } else {
                     getStudentDetails(IDText.getText().toString(), NameText.getText().toString());
                 }
+
             }
         });
 
@@ -98,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     private void getStudentDetails(String sid, String stn) {
 
         // post our data.
-        String url = "http://192.168.254.105/Students/DisplayIDName.php";
+        String url = "http://192.168.254.100/Students/DisplayIDName.php";
 
         // creating a new variable for our request queue.
         RequestQueue q = Volley.newRequestQueue(MainActivity.this);
@@ -111,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    // Try display results
                     JSONObject parent = new JSONObject(response);
 
                     //get JSON Array Node
@@ -133,10 +122,11 @@ public class MainActivity extends AppCompatActivity {
                             GetDetails(size, A1, A2);
                     }
 
+
+
                 } catch (JSONException e) { //Display Error if any
                     makeText(getBaseContext(),"ERROR \n\n" + e.getMessage(), LENGTH_SHORT).show();
                 }
-
             }
         },
             new Response.ErrorListener() {
@@ -169,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             StudentNameArr[i] = sin[i];
         }
 
-        CustomAdapt ada = new CustomAdapt(this,StudentIDArr,StudentNameArr);
+        MainAdapter ada = new MainAdapter(this,StudentIDArr,StudentNameArr);
         recycler_v.setAdapter(ada);
     }
 }

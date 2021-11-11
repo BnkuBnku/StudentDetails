@@ -13,19 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 
-public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.StudentIDViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.StudentIDViewHolder> {
     Context context;
     String[] SID;
     String[] SIN;
 
-    String D_Year;
-    String D_Off;
-    String D_Sub;
-    String D_Sched;
-    String D_Room;
-    String D_Teach;
-
-    public CustomAdapt(Context context, String[] SID, String[] SIN) {
+    public MainAdapter(Context context, String[] SID, String[] SIN) {
         this.context = context;
         this.SID = SID;
         this.SIN = SIN;
@@ -36,15 +29,19 @@ public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.StudentIDViewH
         TableRow tableRow;
 
         //variable for textView/s
-        TextView id_tv,student_tv;
+        TextView id_tv,student_tv, idcheck;
+
+        String[] id = new String[1];
 
         public StudentIDViewHolder(@NonNull View itemView) {
             super(itemView);
 
             id_tv = itemView.findViewById(R.id.id_tv);
+            idcheck = itemView.findViewById(R.id.editTextTextPersonName);
             student_tv = itemView.findViewById(R.id.student_tv);
             tableRow = itemView.findViewById(R.id.student_details);
             tableRow.setOnClickListener(onRowClick);
+
         }
 
         View.OnClickListener onRowClick = new View.OnClickListener() {
@@ -58,6 +55,7 @@ public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.StudentIDViewH
                 context.startActivity(i);
             }
         };
+
     }
 
 
@@ -80,5 +78,4 @@ public class CustomAdapt extends RecyclerView.Adapter<CustomAdapt.StudentIDViewH
         holder.id_tv.setText(SID[position]);
         holder.student_tv.setText(SIN[position]);
     }
-
 }
